@@ -1,0 +1,36 @@
+
+    <div>{{title}}</div>
+    <!-- {{roomList}} -->
+    <table>
+        <tr><th>Room Number</th>
+        <th>Room Type</th>
+        <th>Amenities</th>
+        <th>Price</th>
+        <th>Photos</th>
+    <th>Check In Time</th>
+    <th>Check Out Time</th>
+    <th>Even</th>
+    <th>Odd</th>
+    <th>Rating</th>
+    <th>Select Room</th>
+</tr>
+    @for(room of rooms |slice:0:50;track room.roomNumber; let e=$even,o=$odd){
+        <tr [ngClass]="e?'even':'odd'"> 
+            <td>{{room.roomNumber}}</td>
+            <td>{{room.roomType}}</td>
+            <td>{{room.amenities}}</td>
+            <td>{{room.price}}</td>
+            <td>{{room.photos}}</td>
+            <td>{{room.checkinTime}}</td>
+            <td>{{room.checkoutTime}}</td>
+            <td>{{e}}</td>
+            <td>{{o}}</td>
+            <td>{{room.rating}}</td>
+            <td>
+                <!-- <button class="btn btn-primary"(click)="selectRoom(room)">Select</button> -->
+                <button class="btn btn-primary" [routerLink]="['/rooms',room.roomNumber]">Book Room</button>
+            </td>
+        </tr>
+    }
+    </table>
+
